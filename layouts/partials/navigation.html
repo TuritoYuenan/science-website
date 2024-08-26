@@ -1,0 +1,9 @@
+{{ $homelink := relURL "" }}
+<nav>
+	<a href="{{ $homelink }}">The Science Website</a>
+	<div>
+		{{ range site.Menus.main }}
+		<a href="{{ .URL }}">{{ .Name }}</a>
+		{{ end }}
+	</div>
+</nav>

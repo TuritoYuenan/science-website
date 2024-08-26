@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+
+{{ $style := resources.Get "styles/global.css" | resources.Minify }}
+{{ $favicon := relURL "favicon.svg" }}
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	{{ template "_internal/schema.html" . }}
+	{{ template "_internal/opengraph.html" . }}
+	{{ template "_internal/twitter_cards.html" . }}
+
+	<title>{{ with .Page.Title }}{{ . }} &ndash; {{ end }}{{ .Site.Title }}</title>
+
+	<link rel="shortcut icon" href="{{ $favicon }}" type="image/svg+xml">
+	<link rel="stylesheet" href="{{ $style.RelPermalink }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+
+	{{ block "head" . }}{{ end }}
+</head>
+
+<body>
+	<script>0</script>
+	{{ partial "navigation.html" . }}
+	<main aria-role="main">
+		{{ block "main" . }}{{ end }}
+	</main>
+	{{ partial "footer.html" . }}
+</body>
+
+</html>

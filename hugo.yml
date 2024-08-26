@@ -1,0 +1,12 @@
+baseURL: https://turitoyuenan.github.io/science-website
+languageCode: en-vn
+title: Turito Yuenan's Science Website
+
+sectionPagesMenu: main
+enableRobotsTXT: true
+
+params:
+  subtitle: Collection of resources, findings, and other sciency stuffs
+
+taxonomies:
+  fields: fields

@@ -1,0 +1,37 @@
+{{ define "head" }}
+{{ $css := resources.Get "styles/page-home.css" | resources.Minify }}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
+{{ end }}
+
+{{ define "main" }}
+{{ $fields := relURL "fields" }}
+<header>
+	<div>
+		<h1>{{ .Title }}</h1>
+		<p class="subtitle">{{ .Site.Params.subtitle }}</p>
+		<a class="cta" href="{{ $fields }}">View all covered fields</a>
+	</div>
+	<section>
+		{{ range (where (where .Site.Pages "Type" "fields") "Kind" "term").Limit 6 }}
+		<a href="{{ .RelPermalink }}" style="--color: var(--ctp-mocha-{{ .Params.Color }})">
+			<span class="material-symbols-rounded">{{ .Params.Icon }}</span>
+			<p>{{ .LinkTitle }}</p>
+		</a>
+		{{ end }}
+	</section>
+</header>
+<div class="dual" id="feeds">
+	<section>
+		<h2>Latest blog</h2>
+		{{ range where .Site.RegularPages "Type" "blog" }}
+		<p>{{ .LinkTitle }}</p>
+		{{ end }}
+	</section>
+	<section>
+		<h2>Latest wiki entry</h2>
+		{{ range where .Site.RegularPages "Type" "wiki" }}
+		<p>{{ .LinkTitle }}</p>
+		{{ end }}
+	</section>
+</div>
+{{ end }}
