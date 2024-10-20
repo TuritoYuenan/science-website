@@ -6,7 +6,12 @@
 		{
 			"label": "build",
 			"type": "shell",
-			"command": "hugo"
+			"command": "hugo --minify",
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
 		},
 		{
 			"label": "dev mode",
