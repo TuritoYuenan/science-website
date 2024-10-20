@@ -74,4 +74,13 @@ div#feeds > section {
 	padding: 1rem;
 	background-color: var(--ctp-mocha-crust);
 	border-radius: 1rem;
+	display: grid;
+	gap: 1rem;
+}
+
+/* MARK: Home page feed cards */
+
+.feed-card {
+	padding: 1rem;
+	background-color: var(--ctp-mocha-mantle);
 }

@@ -24,7 +24,17 @@
 	<section>
 		<h2>Latest blog</h2>
 		{{ range where .Site.RegularPages "Type" "blog" }}
-		<p>{{ .LinkTitle }}</p>
+		<a href="{{ .RelPermalink }}" class="feed-card">
+			<hgroup>
+				<h3>{{ .LinkTitle }}</h3>
+				<p>{{ .Description }}</p>
+				<p>
+					{{ range .Params.fields }}
+					<span>{{ . }}</span>
+					{{ end }}
+				</p>
+			</hgroup>
+		</a>
 		{{ end }}
 	</section>
 	<section>
